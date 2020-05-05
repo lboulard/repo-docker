@@ -16,7 +16,6 @@ RUN curl -o jdk8.tgz https://android.googlesource.com/platform/prebuilts/jdk/jdk
     && mv linux-x86 /usr/lib/jvm/java-8-openjdk-amd64 \
     && rm -rf jdk8.tgz
 
-#RUN mkdir -p /usr/local/bin
 COPY repo /usr/local/bin/repo
 RUN  chmod a+x /usr/local/bin/repo
 
