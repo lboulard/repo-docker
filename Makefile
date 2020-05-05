@@ -20,6 +20,7 @@ image-testing: .image-testing
 	touch "$@"
 
 clean:
+	@docker image prune -f
 	@$(RM) -f .image .image-2.7 .image-testing
 
 .PHONY: clobber
@@ -42,14 +43,16 @@ run-testing:
 
 .PHONY: help
 help:
-	@echo "$(MAKE) targets:"
-	@echo "          help:  Display this message"
-	@echo "         image:  Build Docker image android-repo:latest for latest repo on Ubuntu 18.04"
-	@echo "     image-2.7:  Build Docker image android-repo:2.7 for latest repo supported by Python 2.7 on Ubuntu 20.04"
-	@echo " image-testing:  Build Docker image android-repo:testing for latest repo with Python 3.6 on Debian testing"
-	@echo "           run:  Run bash from image android-repo:latest"
-	@echo "       run-2.7:  Run bash from image android-repo:2.7"
-	@echo "   run-testing:  Run bash from image android-repo:testing"
-	@echo "        images:  Build targets image, image-2.7 and image-testing"
-	@echo "         clean:  Remove sentinel for images build"
-	@echo "       clobber:  Target clean and destroy docker images"
+	@echo "Makefile targets:"
+	@{ \
+		echo " help^  Display this message"; \
+		echo " image^  Build Docker image android-repo:latest for latest repo on Ubuntu 18.04"; \
+		echo " image-2.7^  Build Docker image android-repo:2.7 for latest repo supported by Python 2.7 on Ubuntu 20.04"; \
+		echo " image-testing^  Build Docker image android-repo:testing for latest repo with Python 3.6 on Debian testing"; \
+		echo " run^  Run bash from image android-repo:latest"; \
+		echo " run-2.7^  Run bash from image android-repo:2.7"; \
+		echo " run-testing^  Run bash from image android-repo:testing"; \
+		echo " images^  Build targets image, image-2.7 and image-testing"; \
+		echo " clean^  Prune docker image"; \
+		echo " clobber^  Run clean target and destroy docker images"; \
+	} | column -s ^ -t -e
