@@ -1,4 +1,4 @@
-# Makefile for fast createrion/delation of Docker images and containers
+# Makefile for fast creation/deletion of Docker images and containers
 
 all: help
 
