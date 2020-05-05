@@ -3,3 +3,5 @@
 *.orig
 *.sw[a-z]
 \#*\#
+
+/.image*
